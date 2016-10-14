@@ -4,7 +4,7 @@ post "/answers/:id/comments" do
 
     if @comment.save
       status 200
-      redirect '/'
+      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
     else
      status 500
      @errors = @comment.errors.full_messages
@@ -19,7 +19,7 @@ post "/questions/:id/comments" do
 
     if @comment.save
       status 200
-      erb :"/questions/show"
+      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
     else
      status 500
      @errors = @comment.errors.full_messages
