@@ -47,6 +47,11 @@ $(document).ready(function() {
 
   $(".answers_List").on('click', ".comment_answer_link", function(event){
         event.preventDefault();
+        var answerRoute = $(this).attr('href');
+        var reg = /\d/;
+        var answer_id = reg.exec(answerRoute);
+        var new_action = '/answers/' + answer_id[0] + '/comments';
+        $(".comment-form-answer")[0].childNodes[2].action = new_action;
         $(".comment-form-answer").toggle();
   })
 
@@ -55,21 +60,19 @@ $(document).ready(function() {
     $(".comment-form-question").toggle();
   });
 
-
-
-
-
     $(".comment-form-answer").on('click', 'button', function(event) {
       event.preventDefault();
-      console.log(this);
       var comment = $('.form_comment_answer').find('textarea').serialize();
       var route = $('.form_comment_answer').attr('action');
+      var reg = /\d/;
+      var answer_id = reg.exec(route)[0];
+      var ul_id = '#answer_comments_' + answer_id;
       $.ajax({
         url: route,
         method: 'post',
         data: comment
       }).done(function(response) {
-        $('.answers_List').find('.answer_comments').append(response)
+        $('.answers_List').find(ul_id).append(response)
       }).fail(function(jqXHR, textStatus, errorThrown) {
         $('.answers_List').prepend("<span>" + errorThrown + "</span>");
       });

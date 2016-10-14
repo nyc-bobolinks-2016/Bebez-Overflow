@@ -1,7 +1,7 @@
 <li class="answers"><%= answer.content %> - <%= answer.responder.username %>
   <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
 </li>
-<ul id="answer-comment" class="answer_comments">
+<ul id="answer_comments_<%= answer.id %>" class="answer_comments">
   <% answer.comments.each do |comment| %>
     <li>  <%= comment.text %> </li>
   <% end %>
