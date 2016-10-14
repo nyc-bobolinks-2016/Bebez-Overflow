@@ -5,6 +5,11 @@
     <li class='question'>question :<%= @question.body %></li>
     <li class='user'>posted by User :<%= current_user.username %></li>
   </ul>
+
+  <div class="question-comment">
+    <a href="/questions/<%= @question.id %>/comments/new">add comment</a>
+    <%= erb :'/comments/_comment', locals: { commentable: @commentable } %>
+  </div>
 </div>
 
 <div>

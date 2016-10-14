@@ -1,5 +1,5 @@
 <%= erb :'/_errors' %>
-<form class="form_comment" action="/answers/<%= @answer.id %>/comments" method="post">
+<form class="form_comment" action="/answers/<%= @commentable.id %>/comments" method="post">
       <label for="text">Comment:</label>
       <textarea name="text" rows="4" cols="40"></textarea>
       <input type="submit" value="comment">
