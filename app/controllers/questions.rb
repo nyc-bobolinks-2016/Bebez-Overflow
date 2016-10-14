@@ -22,6 +22,7 @@ end
 
 get '/questions/:id' do
   @question = Question.find_by(id: params[:id])
+  @commentable = @question
   erb :'/questions/show'
 end
 
