@@ -29,7 +29,9 @@ function setInactiveTab() {
 
 $(document).ready(function() {
   hideTabContent();
-  $(".comment-form").hide();
+  $(".comment-form-question").hide();
+  $(".comment-form-answer").hide();
+
   $(".answer-form").hide();
   $('.tabs').click(function(event) {
       setInactiveTab();
@@ -42,18 +44,68 @@ $(document).ready(function() {
      }
   });
 
-  $('.question-comment').on('click', 'a', function(event) {
+
+  $(".answers_List").on('click', ".comment_answer_link", function(event){
+        event.preventDefault();
+        $(".comment-form-answer").toggle();
+  })
+
+  $('.question-comment').on('click', '#add-comment', function(event) {
     event.preventDefault();
-    $(".comment-form").show();
+    $(".comment-form-question").toggle();
   });
 
-  $('.question-answer').on('click', 'a', function(event) {
+
+
+
+
+    $(".comment-form-answer").on('click', 'button', function(event) {
+      event.preventDefault();
+      console.log(this);
+      var comment = $('.form_comment_answer').find('textarea').serialize();
+      var route = $('.form_comment_answer').attr('action');
+      $.ajax({
+        url: route,
+        method: 'post',
+        data: comment
+      }).done(function(response) {
+        $('.answers_List').find('.answer_comments').append(response)
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+        $('.answers_List').prepend("<span>" + errorThrown + "</span>");
+      });
+    });
+
+  $(".comment-form-question").on('click', 'button', function(event) {
     event.preventDefault();
-    $(".answer-form").show();
+    console.log(this);
+    var comment = $('.form_comment_question').find('textarea').serialize();
+    var route = $('.form_comment_question').attr('action');
+    $.ajax({
+      url: route,
+      method: 'post',
+      data: comment
+    }).done(function(response) {
+      $('.question-comment').find('ul').append(response)
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      $('.question-comment').prepend("<span>" + errorThrown + "</span>");
+    });
   });
 
+  $('.question-answer').on('click', '#answer', function(event) {
+    event.preventDefault();
+    $(".answer-form").toggle();
+  });
   $('.answer-form').on('click', 'button', function(event) {
     event.preventDefault();
+    var route = $('.form_answer').attr('action');
+    var answer = $('.form_answer').find('textarea').serialize();
+    $.ajax({
+      url: route,
+      method: 'post',
+      data: answer
+    }).done(function(response) {
+      $('.question-answer').find(".answers_List").append(response);
+    })
 })
 })
 

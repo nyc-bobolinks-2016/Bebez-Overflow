@@ -9,12 +9,12 @@ get '/questions/:id/answers/new' do
   erb :'/answers/_answer'
 end
 
-get "/answers/:id/comments" do
+get "/answers/:id/comments/new" do
     @commentable = Answer.find_by(id: params[:id])
-    erb :"comments/_comment"
+    erb :"comments/_answer_comment", layout: false, locals: {commentable: @commentable}
 end
 
 get "/questions/:id/comments/new" do
     @commentable = Question.find_by(id: params[:id])
-    erb :"comments/_comment"
+    erb :"comments/_question_comment"
 end

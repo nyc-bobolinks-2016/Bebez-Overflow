@@ -1,8 +1,8 @@
 <%= erb :'/_errors' %>
 <div class='form-container'>
-  <form class="form_anwser" action="/questions/<%= @question.id %>/answer" method="post">
+  <form class="form_answer" action="/questions/<%= @question.id %>/answer" method="post">
         <label for="text">Answer:</label>
         <textarea name="content" rows="4" cols="80"></textarea>
-        <button class="submit-form" type="submit" value="submit answer">submit answer</button>
+        <button class="submit-form" type="submit" value="submit answer">post your answer</button>
   </form>
 </div>
