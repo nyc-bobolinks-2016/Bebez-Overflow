@@ -1,8 +1,8 @@
-<li class="answers"><%= answer.content %> - <%= answer.responder.username %>
+<li class="answers"> <a href="#">👎</a>   <a href="#">👍</a>  <%= total_votes(answer) %>  <%= answer.content %> - <%= answer.responder.username %>
   <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
 </li>
 <ul id="answer_comments_<%= answer.id %>" class="answer_comments">
   <% answer.comments.each do |comment| %>
-    <li>  <%= comment.text %> </li>
+    <li> <a href="#">👎</a>   <a href="#">👍</a>  <%= total_votes(comment) %>  <%= comment.text %> </li>
   <% end %>
 </ul>
