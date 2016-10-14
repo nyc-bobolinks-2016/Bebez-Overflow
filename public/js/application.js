@@ -52,12 +52,14 @@ $(document).ready(function() {
         var answer_id = reg.exec(answerRoute);
         var new_action = '/answers/' + answer_id[0] + '/comments';
         $(".comment-form-answer")[0].childNodes[2].action = new_action;
-        $(".comment-form-answer").toggle();
+        $(".comment-form-answer").toggle()
+        $(".form_comment_answer")[0].reset();
   })
 
   $('.question-comment').on('click', '#add-comment', function(event) {
     event.preventDefault();
-    $(".comment-form-question").toggle();
+    $(".form_comment_question")[0].reset()
+    $(".comment-form-question").toggle()
   });
 
     $(".comment-form-answer").on('click', 'button', function(event) {
@@ -73,6 +75,8 @@ $(document).ready(function() {
         data: comment
       }).done(function(response) {
         $('.answers_List').find(ul_id).append(response)
+        $(".comment-form-answer").toggle()
+        $(".form_comment_answer")[0].reset()
       }).fail(function(jqXHR, textStatus, errorThrown) {
         $('.answers_List').prepend("<span>" + errorThrown + "</span>");
       });
@@ -89,6 +93,7 @@ $(document).ready(function() {
       data: comment
     }).done(function(response) {
       $('.question-comment').find('ul').append(response)
+      $(".comment-form-question").toggle()
     }).fail(function(jqXHR, textStatus, errorThrown) {
       $('.question-comment').prepend("<span>" + errorThrown + "</span>");
     });
@@ -96,7 +101,7 @@ $(document).ready(function() {
 
   $('.question-answer').on('click', '#answer', function(event) {
     event.preventDefault();
-    $(".answer-form").toggle();
+    $(".answer-form").toggle()
   });
   $('.answer-form').on('click', 'button', function(event) {
     event.preventDefault();
