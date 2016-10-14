@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Welcome, <%= @user.username %></h2>
+
+    <ul class="tabs">
+        <li class="active"><a href="#Profile">Profile</a></li>
+        <li><a href="#Activity">Activity</a></li>
+    </ul>
+
+    <div class="tab-content" id="profile">
+      <h2><%= current_user.username %></h2>
+      <p>something about me</p>
+      <p><a href="">some edit about me link</a></p>
+    </div>
+
+    <div class="tab-content" id="activity">
+      <h2>Summary</h2>
+      <div class="questions-summary">
+        <h4>Questions</h4>
+        <% @questions.each do |question| %>
+          <span class="question-summary"><a href="/questions/<%= question.id %>"><%= question.title %></a></span>
+        <% end %>
+      </div>
+
+      <div class="comments-summary">
+        <h4>Comments</h4>
+        <% @comments.each do |comment| %>
+          <% if comment.commentable.class == Answer %>
+          <span class="comment-summary"><a href ="/questions/<%= comment.commentable.question_id %>"><%= comment.text %></a></span>
+          <% elsif comment.commentable.class == Question %>
+          <span class="comment-summary"><a href ="/questions/<%= comment.commentable.id %>"><%= comment.text %></a></span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="answers-summary">
+        <h4>Answers</h4>
+        <% @answers.each do |answer| %>
+          <span class="answer-summary"><a href="/questions/<%= answer.question_id %>"><%= answer.content %></a></span>
+        <% end %>
+      </div>
+
+      <p>maybe another tabs menu for questions, answers, comments nested in this tab</p>
+    </div>
+</div>

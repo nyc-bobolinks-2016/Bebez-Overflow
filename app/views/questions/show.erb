@@ -1,0 +1,14 @@
+<h2>Details for <%= @question.id %></h2>
+<div>
+  <ul class='question_details'>
+    <li class='title'>title:<%= @question.title %></li><br>
+    <li class='question'>question :<%= @question.body %></li>
+    <li class='user'>posted by User :<%= current_user.username %></li>
+  </ul>
+</div>
+
+<div>
+  <li>
+     <a href ="/questions/<%= @question.id %>/edit"> Edit </a>
+  </li>
+</div>
