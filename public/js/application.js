@@ -39,4 +39,8 @@ $(document).ready(function() {
        event.preventDefault();
      }
   });
+
+  $('.questions-summary').on('click', 'a', function(event) {
+    event.preventDefault();
+  })
 });
