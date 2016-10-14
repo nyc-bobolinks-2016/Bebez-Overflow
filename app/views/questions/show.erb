@@ -1,4 +1,13 @@
-<h2><a id="down_question_count" href="/questions/<%= @question.id %>/votes/down">👎</a>   <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up">👍</a> <span id="total_question_votes"> <%= total_votes(@question) %></span> - <%= @question.title  %></h2>
+<h2>
+  <%if logged_in? %>
+  <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down">👎</a>
+  <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up">👍</a>
+  <% else %>
+  <a id="down_question_count" href="#">👎</a>
+  <a id="up_question_count" href="#">👍</a>
+  <% end %>
+  <span id="total_question_votes"> <%= total_votes(@question) %>:</span>
+  <%= @question.title  %></h2>
 <div>
   <ul class='question_details'>
     <li class='question'>question :<%= @question.body %></li>

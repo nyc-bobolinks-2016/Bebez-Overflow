@@ -32,7 +32,7 @@ $(document).ready(function() {
   $("#down_question_count").click(function(event){
     event.preventDefault();
     var questionRoute = $(this).attr('href');
-    var reg = /\d/;
+    var reg = /\d+/;
     var answer_id = reg.exec(questionRoute);
     param = { id: answer_id[0] }
     $.ajax({
@@ -48,7 +48,7 @@ $(document).ready(function() {
   $("#up_question_count").click(function(event){
     event.preventDefault();
     var questionRoute = $(this).attr('href');
-    var reg = /\d/;
+    var reg = /\d+/;
     var answer_id = reg.exec(questionRoute);
     param = { id: answer_id[0] }
     $.ajax({
@@ -82,7 +82,7 @@ $(document).ready(function() {
   $(".answers_List").on('click', ".comment_answer_link", function(event){
         event.preventDefault();
         var answerRoute = $(this).attr('href');
-        var reg = /\d/;
+        var reg = /\d+/;
         var answer_id = reg.exec(answerRoute);
         var new_action = '/answers/' + answer_id[0] + '/comments';
         $(".comment-form-answer")[0].childNodes[2].action = new_action;
@@ -100,7 +100,7 @@ $(document).ready(function() {
       event.preventDefault();
       var comment = $('.form_comment_answer').find('textarea').serialize();
       var route = $('.form_comment_answer').attr('action');
-      var reg = /\d/;
+      var reg = /\d+/;
       var answer_id = reg.exec(route)[0];
       var ul_id = '#answer_comments_' + answer_id;
       $.ajax({
