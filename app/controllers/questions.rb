@@ -4,7 +4,13 @@ get '/questions' do
 end
 
 get '/questions/new' do
-  erb :'questions/new'
+  erb :'/questions/new'
+end
+
+get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  @commentable = @question
+  erb :'/questions/show'
 end
 
 post '/questions' do
@@ -18,12 +24,6 @@ post '/questions' do
     @errors = question.errors.full_message
     erb :'questions/new'
   end
-end
-
-get '/questions/:id' do
-  @question = Question.find_by(id: params[:id])
-  @commentable = @question
-  erb :'/questions/show'
 end
 
 get '/questions/:id/edit' do

@@ -24,11 +24,13 @@ function hideTabContent() {
 
 function setInactiveTab() {
   $('li').removeClass('active');
-  hideTabContent();
   $(event.target.parentNode).addClass("active");
 };
 
 $(document).ready(function() {
+  hideTabContent();
+  $(".comment-form").hide();
+  $(".answer-form").hide();
   $('.tabs').click(function(event) {
       setInactiveTab();
     if (event.target.innerHTML == "Profile") {
@@ -40,7 +42,19 @@ $(document).ready(function() {
      }
   });
 
-  // $('.questions-summary').on('click', 'a', function(event) {
-  //   event.preventDefault(); // FIXME: this should probably redirect to the question page itself
-  // })
-});
+  $('.question-comment').on('click', 'a', function(event) {
+    event.preventDefault();
+    $(".comment-form").show();
+  });
+
+  $('.question-answer').on('click', 'a', function(event) {
+    event.preventDefault();
+    $(".answer-form").show();
+  });
+
+  $('.answer-form').on('click', 'button', function(event) {
+    event.preventDefault();
+})
+})
+
+// });
