@@ -28,6 +28,40 @@ function setInactiveTab() {
 };
 
 $(document).ready(function() {
+
+  $("#down_question_count").click(function(event){
+    event.preventDefault();
+    var questionRoute = $(this).attr('href');
+    var reg = /\d/;
+    var answer_id = reg.exec(questionRoute);
+    param = { id: answer_id[0] }
+    $.ajax({
+      url: questionRoute,
+      method: 'post',
+      data: param
+    }).done(function(response) {
+      $('#total_question_votes').html(response);
+    })
+
+  })
+
+  $("#up_question_count").click(function(event){
+    event.preventDefault();
+    var questionRoute = $(this).attr('href');
+    var reg = /\d/;
+    var answer_id = reg.exec(questionRoute);
+    param = { id: answer_id[0] }
+    $.ajax({
+      url: questionRoute,
+      method: 'post',
+      data: param
+    }).done(function(response) {
+      $('#total_question_votes').html(response);
+    })
+
+  })
+
+
   hideTabContent();
   $(".comment-form-question").hide();
   $(".comment-form-answer").hide();
