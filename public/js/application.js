@@ -40,7 +40,7 @@ $(document).ready(function() {
      }
   });
 
-  $('.questions-summary').on('click', 'a', function(event) {
-    event.preventDefault();
-  })
+  // $('.questions-summary').on('click', 'a', function(event) {
+  //   event.preventDefault(); // FIXME: this should probably redirect to the question page itself
+  // })
 });
