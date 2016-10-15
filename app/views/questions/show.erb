@@ -1,14 +1,46 @@
-<h2>Details for <%= @question.id %></h2>
+<h2>
+  <%if logged_in? %>
+  <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down">👎</a>
+  <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up">👍</a>
+  <% else %>
+  <a id="down_question_count" href="#">👎</a>
+  <a id="up_question_count" href="#">👍</a>
+  <% end %>
+  <span id="total_question_votes"> <%= total_votes(@question) %>:</span>
+  <%= @question.title  %></h2>
 <div>
   <ul class='question_details'>
-    <li class='title'>title:<%= @question.title %></li><br>
     <li class='question'>question :<%= @question.body %></li>
-    <li class='user'>posted by User :<%= current_user.username %></li>
+    <li class='user'>posted by User :<%= @question.user.username %></li>
   </ul>
-</div>
+  <div>
+    <% if logged_in? && current_user == @question.user %>
+    <li>
+       <a href ="/questions/<%= @question.id %>/edit"> Edit Question</a>
+    </li>
+    <% end %>
+  </div>
 
-<div>
-  <li>
-     <a href ="/questions/<%= @question.id %>/edit"> Edit </a>
-  </li>
-</div>
+  <div class="question-comment">
+    <h5>Comments:</h5>
+    <ul>
+      <% @question.comments.each do |comment| %>
+        <a href="#">👎</a>   <a href="#">👍</a> <%= total_votes(comment) %> <%= erb :'/comments/_show_comment', layout: false, locals: { comment: comment } %>
+      <% end %>
+    </ul>
+    <a id="add-comment" href="/questions/<%= @question.id %>/comments/new">add comment</a>
+  </div>
+  </div>
+
+  <div class="question-answer">
+    <h4>Answers</h4>
+    <ul class="answers_List">
+      <% @question.answers.each do |answer| %>
+      <%= erb :'/answers/_show_answer', locals: { answer: answer } %>
+      <% end %>
+    </ul>
+    <a id="answer" href="/questions/<%= @question.id %>/answers/new">answer this question</a>
+    <div class="answer-form"><%= erb :'/answers/_answer', locals: { commentable: @commentable } %></div>
+  </div>
+    <div class="comment-form-question"><%= erb :'/comments/_question_comment', locals: { commentable: @commentable } %></div>
+    <div class="comment-form-answer"><%= erb :'/comments/_answer_comment', locals: { commentable: @commentable } %></div>
