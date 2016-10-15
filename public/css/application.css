@@ -54,10 +54,6 @@ footer {
     padding: 15px;
   }
 
-a .log {
-    font-size: 12pt;
-    color: white;
-}
 
   /* On small screens, set height to 'auto' for sidenav and grid */
   @media screen and (max-width: 767px) {
