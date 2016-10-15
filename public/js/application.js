@@ -3,6 +3,8 @@ function hideTabContent() {
   $("#activity").hide();
 };
 
+
+
 function setInactiveTab() {
   $('li').removeClass('active');
   $(event.target.parentNode).addClass("active");
