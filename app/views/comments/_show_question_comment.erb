@@ -1,16 +1,17 @@
 <div>
   <%if logged_in? %>
-      <a class="down_comment_question_count"
-        href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/down">👎</a>
       <a class="up_comment_question_count"
-        href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/up">👍</a>
+      href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+      <a class="down_comment_question_count"
+        href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
   <% else %>
-      <a class="down_comment_question_count"
-        href="#">👎
-      </a>
       <a class="up_comment_question_count"
-        href="#">👍
+        href="#"><span class="glyphicon glyphicon-chevron-up"></span>
       </a>
+      <a class="down_comment_question_count"
+        href="#"><span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+
   <% end %>
   <span >
       <%= total_votes(comment) %>
