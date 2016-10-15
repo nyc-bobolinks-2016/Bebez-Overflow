@@ -3,47 +3,12 @@ function hideTabContent() {
   $("#activity").hide();
 };
 
-
-
 function setInactiveTab() {
   $('li').removeClass('active');
   $(event.target.parentNode).addClass("active");
 };
 
 $(document).ready(function() {
-
-  $("#down_question_count").click(function(event){
-    event.preventDefault();
-    var questionRoute = $(this).attr('href');
-    var reg = /\d+/;
-    var answer_id = reg.exec(questionRoute);
-    param = { id: answer_id[0] }
-    $.ajax({
-      url: questionRoute,
-      method: 'post',
-      data: param
-    }).done(function(response) {
-      $('#total_question_votes').html(response);
-    })
-
-  })
-
-  $("#up_question_count").click(function(event){
-    event.preventDefault();
-    var questionRoute = $(this).attr('href');
-    var reg = /\d+/;
-    var answer_id = reg.exec(questionRoute);
-    param = { id: answer_id[0] }
-    $.ajax({
-      url: questionRoute,
-      method: 'post',
-      data: param
-    }).done(function(response) {
-      $('#total_question_votes').html(response);
-    })
-
-  })
-
 
   hideTabContent();
   $(".comment-form-question").hide();
@@ -77,43 +42,6 @@ $(document).ready(function() {
     event.preventDefault();
     $(".form_comment_question")[0].reset()
     $(".comment-form-question").toggle()
-  });
-
-  $('.question-comment').on('click', '.down_comment_question_count', function(event) {
-    event.preventDefault();
-    var votes = $(this).parent().find('span')
-    var route = $(this).attr('href');
-    var reg = /(\d+)\S*(\d+)/
-    var question_id = reg.exec(route)[1];
-    var comment_id = reg.exec(route)[2];
-    params = {question_id: question_id, comment_id: comment_id}
-
-    $.ajax({
-      url: route,
-      method: 'post',
-      data: params
-    }).done(function(response){
-      $(votes).html(response)
-    })
-  });
-
-
-  $('.question-comment').on('click', '.up_comment_question_count', function(event) {
-    event.preventDefault();
-    var votes = $(this).parent().find('span')
-    var route = $(this).attr('href');
-    var reg = /(\d+)\S*(\d+)/
-    var question_id = reg.exec(route)[1];
-    var comment_id = reg.exec(route)[2];
-    params = {question_id: question_id, comment_id: comment_id}
-
-    $.ajax({
-      url: route,
-      method: 'post',
-      data: params
-    }).done(function(response){
-      $(votes).html(response)
-    })
   });
 
 
@@ -158,6 +86,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".answer-form").toggle()
   });
+  
   $('.answer-form').on('click', 'button', function(event) {
     event.preventDefault();
     var route = $('.form_answer').attr('action');

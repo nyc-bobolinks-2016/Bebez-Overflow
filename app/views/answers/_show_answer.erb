@@ -1,4 +1,23 @@
-<li class="answers"> <a href="#">👎</a>   <a href="#">👍</a>  <%= total_votes(answer) %>  <%= answer.content %> - <%= answer.responder.username %>
+<li class="answers">
+  <div>
+    <%if logged_in? %>
+        <a class="down_answer_count"
+          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/down">👎
+        </a>
+        <a class="up_answer_count"
+          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up">👍</a>
+    <% else %>
+        <a class="down_answer_count"
+          href="#">👎
+        </a>
+        <a class="up_answer_count"
+          href="#">👍</a>
+    <% end %>
+    <span >
+        <%= total_votes(answer) %>
+    </span>
+  </div>
+  <%= answer.content %> - <%= answer.responder.username %>
   <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
 </li>
 <ul id="answer_comments_<%= answer.id %>" class="answer_comments">
