@@ -16,7 +16,6 @@ post "/questions/:id/comments" do
     @question = Question.find_by(id: params[:id])
     @commentable = @question
     @comment = Comment.new(text: params[:text], commenter: current_user, commentable: @commentable)
-    curre
 
     if @comment.save
       status 200

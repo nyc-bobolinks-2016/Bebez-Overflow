@@ -1,1 +1,11 @@
+<div>
+  <a class="down_comment_question_count"
+    href="/questions/<%= @question.id %>/comments/<%= comment.id %>/votes/down">👎
+  </a>
+  <a class="up_comment_question_count"
+    href="/questions/<%= @question.id %>/comments/<%= comment.id %>/votes/up">👍</a>
+  <span >
+      <%= total_votes(comment) %>
+  </span>
+</div>
 <li class="comments"><%= comment.text %> - <%= comment.commenter.username %></li>

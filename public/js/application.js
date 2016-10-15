@@ -79,6 +79,44 @@ $(document).ready(function() {
     $(".comment-form-question").toggle()
   });
 
+  $('.question-comment').on('click', '.down_comment_question_count', function(event) {
+    event.preventDefault();
+    var votes = $(this).parent().find('span')
+    var route = $(this).attr('href');
+    var reg = /(\d+)\S*(\d+)/
+    var question_id = reg.exec(route)[1];
+    var comment_id = reg.exec(route)[2];
+    params = {question_id: question_id, comment_id: comment_id}
+
+    $.ajax({
+      url: route,
+      method: 'post',
+      data: params
+    }).done(function(response){
+      $(votes).html(response)
+    })
+  });
+
+
+  $('.question-comment').on('click', '.up_comment_question_count', function(event) {
+    event.preventDefault();
+    var votes = $(this).parent().find('span')
+    var route = $(this).attr('href');
+    var reg = /(\d+)\S*(\d+)/
+    var question_id = reg.exec(route)[1];
+    var comment_id = reg.exec(route)[2];
+    params = {question_id: question_id, comment_id: comment_id}
+
+    $.ajax({
+      url: route,
+      method: 'post',
+      data: params
+    }).done(function(response){
+      $(votes).html(response)
+    })
+  });
+
+
     $(".comment-form-answer").on('click', 'button', function(event) {
       event.preventDefault();
       var comment = $('.form_comment_answer').find('textarea').serialize();
