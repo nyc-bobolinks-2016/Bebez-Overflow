@@ -1,0 +1,19 @@
+<div>
+  <%if logged_in? %>
+      <a class="down_answer_comment_count"
+        href="/questions/<%= comment.commentable.question.id %>/answers/<%= comment.commentable.id %>/comments/<%= comment.id %>/votes/down">👎
+      </a>
+      <a class="up_answer_comment_count"
+        href="/questions/<%= comment.commentable.question.id %>/answers/<%= comment.commentable.id %>/comments/<%= comment.id %>/votes/up">👍</a>
+  <% else %>
+      <a class="down_answer_comment_count"
+        href="#">👎
+      </a>
+      <a class="up_answer_comment_count"
+        href="#">👍</a>
+  <% end %>
+  <span >
+      <%= total_votes(comment) %>
+  </span>
+</div>
+<li class="comments"><%= comment.text %> - <%= comment.commenter.username %></li>

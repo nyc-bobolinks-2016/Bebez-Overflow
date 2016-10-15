@@ -3,47 +3,12 @@ function hideTabContent() {
   $("#activity").hide();
 };
 
-
-
 function setInactiveTab() {
   $('li').removeClass('active');
   $(event.target.parentNode).addClass("active");
 };
 
 $(document).ready(function() {
-
-  $("#down_question_count").click(function(event){
-    event.preventDefault();
-    var questionRoute = $(this).attr('href');
-    var reg = /\d+/;
-    var answer_id = reg.exec(questionRoute);
-    param = { id: answer_id[0] }
-    $.ajax({
-      url: questionRoute,
-      method: 'post',
-      data: param
-    }).done(function(response) {
-      $('#total_question_votes').html(response);
-    })
-
-  })
-
-  $("#up_question_count").click(function(event){
-    event.preventDefault();
-    var questionRoute = $(this).attr('href');
-    var reg = /\d+/;
-    var answer_id = reg.exec(questionRoute);
-    param = { id: answer_id[0] }
-    $.ajax({
-      url: questionRoute,
-      method: 'post',
-      data: param
-    }).done(function(response) {
-      $('#total_question_votes').html(response);
-    })
-
-  })
-
 
   hideTabContent();
   $(".comment-form-question").hide();
@@ -78,6 +43,7 @@ $(document).ready(function() {
     $(".form_comment_question")[0].reset()
     $(".comment-form-question").toggle()
   });
+
 
     $(".comment-form-answer").on('click', 'button', function(event) {
       event.preventDefault();
@@ -120,6 +86,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".answer-form").toggle()
   });
+  
   $('.answer-form').on('click', 'button', function(event) {
     event.preventDefault();
     var route = $('.form_answer').attr('action');

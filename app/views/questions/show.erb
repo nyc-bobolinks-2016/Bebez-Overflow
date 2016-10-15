@@ -25,7 +25,7 @@
     <h5>Comments:</h5>
     <ul>
       <% @question.comments.each do |comment| %>
-        <a href="#">👎</a>   <a href="#">👍</a> <%= total_votes(comment) %> <%= erb :'/comments/_show_comment', layout: false, locals: { comment: comment } %>
+        <%= erb :'/comments/_show_question_comment', layout: false, locals: { comment: comment } %>
       <% end %>
     </ul>
     <a id="add-comment" href="/questions/<%= @question.id %>/comments/new">add comment</a>

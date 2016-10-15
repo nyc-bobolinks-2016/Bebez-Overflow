@@ -4,7 +4,7 @@ post "/answers/:id/comments" do
 
     if @comment.save
       status 200
-      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
+      erb :'/comments/_show_answer_comment', layout: false,  locals: { comment: @comment }
     else
      status 500
      @errors = @comment.errors.full_messages
@@ -13,14 +13,12 @@ post "/answers/:id/comments" do
 end
 
 post "/questions/:id/comments" do
-    @question = Question.find_by(id: params[:id])
-    @commentable = @question
+    @commentable = Question.find_by(id: params[:id])
     @comment = Comment.new(text: params[:text], commenter: current_user, commentable: @commentable)
-    curre
 
     if @comment.save
       status 200
-      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
+      erb :'/comments/_show_question_comment', layout: false,  locals: { comment: @comment }
     else
      status 500
      @errors = @comment.errors.full_messages
