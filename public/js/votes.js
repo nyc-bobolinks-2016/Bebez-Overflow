@@ -109,6 +109,41 @@ $('.answers_List').on('click', '.up_answer_count', function(event) {
 });
 
 
+$('.answers_List').on('click', '.answer_comments .down_answer_comment_count', function(event) {
+  event.preventDefault();
+  var votes = $(this).parent().find('span')
+  var route = $(this).attr('href');
+  var reg = /(\d+)\S*(\d+)\S*(\d+)/
+  var comment_id = reg.exec(route)[3];
+  params = {comment_id: comment_id}
+
+  $.ajax({
+    url: route,
+    method: 'post',
+    data: params
+  }).done(function(response){
+    $(votes).html(response)
+  })
+});
+
+
+$('.answers_List').on('click', '.answer_comments .up_answer_comment_count', function(event) {
+  event.preventDefault();
+  var votes = $(this).parent().find('span')
+  var route = $(this).attr('href');
+  var reg = /(\d+)\S*(\d+)\S*(\d+)/
+  var comment_id = reg.exec(route)[3];
+  params = {comment_id: comment_id}
+
+  $.ajax({
+    url: route,
+    method: 'post',
+    data: params
+  }).done(function(response){
+    $(votes).html(response)
+  })
+});
+
 
 
 
