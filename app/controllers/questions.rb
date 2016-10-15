@@ -1,11 +1,16 @@
-
 get '/questions' do
   @questions = Question.all
   erb :'questions/index'
 end
 
 get '/questions/new' do
-  erb :'questions/new'
+  erb :'/questions/new'
+end
+
+get '/questions/:id' do
+  @question = Question.find_by(id: params[:id])
+  @commentable = @question
+  erb :'/questions/show'
 end
 
 post '/questions' do
@@ -13,33 +18,24 @@ post '/questions' do
 
   if @question.save
     status 200
-    @question
     redirect '/questions'
   else
     status 500
-    # if request.xhr?
-    #
-    # else
+    @errors = question.errors.full_message
+    erb :'questions/new'
   end
 end
 
-get '/questions/:id' do
-  @question = Question.find(params[:id])
-  erb :'/questions/show'
-end
-
 get '/questions/:id/edit' do
-  @question = Question.find(params[:id])
+  @question = Question.find_by(id: params[:id])
   erb :'/questions/edit'
 end
 
-
 put '/questions/:id' do
-  @question = Question.find(params[:id])
+  @question = Question.find_by(id: params[:id])
   @question.update(user: current_user, title: params[:title] , body: params[:body])
   if @question.save
     status 200
-    @question
     redirect '/questions'
   else
     status 500

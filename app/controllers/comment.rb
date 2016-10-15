@@ -1,16 +1,26 @@
-get "/answers/:id/comments" do
-    @answer = Answer.find_by(id: params[:id])
-    erb :"comments/_comment"
-end
-
-
 post "/answers/:id/comments" do
-    @answer = Answer.find_by(id: params[:id])
-    @comment = Comment.new(text: params[:text], commenter: current_user, commentable: @answer)
+    @commentable = Answer.find_by(id: params[:id])
+    @comment = Comment.new(text: params[:text], commenter: current_user, commentable: @commentable)
 
     if @comment.save
       status 200
-      redirect '/'
+      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
+    else
+     status 500
+     @errors = @comment.errors.full_messages
+     erb :"comments/_comment"
+    end
+end
+
+post "/questions/:id/comments" do
+    @question = Question.find_by(id: params[:id])
+    @commentable = @question
+    @comment = Comment.new(text: params[:text], commenter: current_user, commentable: @commentable)
+    curre
+
+    if @comment.save
+      status 200
+      erb :'/comments/_show_comment', layout: false,  locals: { comment: @comment }
     else
      status 500
      @errors = @comment.errors.full_messages

@@ -5,4 +5,6 @@ class Answer < ActiveRecord::Base
   has_many :votes, as: :voteable
 
   validates :content, presence: true
+
+
 end
