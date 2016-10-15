@@ -22,6 +22,6 @@
 </li>
 <ul id="answer_comments_<%= answer.id %>" class="answer_comments">
   <% answer.comments.each do |comment| %>
-    <li> <a href="#">👎</a>   <a href="#">👍</a>  <%= total_votes(comment) %>  <%= comment.text %> </li>
+    <%= erb :'comments/_show_answer_comment', layout: false, locals: {comment: comment }%>
   <% end %>
 </ul>
