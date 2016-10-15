@@ -7,8 +7,9 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/normalize.css">
-  <!-- <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon'/ > -->
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+  <!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
   <!--
     application.css is where you put your styles
   -->
@@ -20,19 +21,86 @@
 
   <title></title>
 </head>
-<body>
-  <h2 class="container">Bebez Overflow</h2>
 
-  <nav class="container">
-    <a href="/">home</a>
-    <% if logged_in? %>
-      <a href="/logout">log out</a>
-      <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
-    <% else %>
-      <a href="/users/new">sign up</a>
-      <a href="/login">log in</a>
-    <% end %>
-  </nav>
-  <%= yield %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <a href="/">home</a>
+          <% if logged_in? %>
+          <span class="glyphicon glyphicon-log-out">
+            <a href="/logout">log out</a>
+          </span>
+            <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+          <% else %>
+          <span class="glyphicon glyphicon-log-in">
+            <a href="/users/new">sign up</a>
+          </span>
+          <span class="glyphicon glyphicon-log-in">
+            <a href="/login">log in</a>
+          <span>
+          <% end %>
+        </span>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+  <!-- <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div> --> 
+    <div class="col-sm-10 text-left">
+      <h2>Bebez Overflow</h2>
+        <%= yield %>
+      <hr>
+      <h3>Test</h3>
+      <p>Lorem ipsum...</p>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTdC3HiZCJoj0oBWQ6Ew7CQp-3u_Blel5LVlZiYk1rhHlTKSJK2nw" width=60px>
+      </div>
+      <div class="well">
+        <img src="http://blog.gotstyle.ca/wp-content/uploads/2014/04/Happy-Socks-New-Spring-Arrivals-Gotstyle-Main.png" width=60px>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Awesome trio : Catkhuu, Nanutza, and JS!  We got Jesus on our side</p>
+</footer>
+
 </body>
 </html>
