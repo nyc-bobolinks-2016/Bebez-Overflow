@@ -167,12 +167,42 @@ form#posts input[type='submit'] {
     text-decoration: none;
 }
 
+.question_title {
+}
 
-.upvote-button {
-  background-color: transparent;
-  border: none;
-  padding-top: 5px;
-  color: #8C8C8C;
-  vertical-align: sub;
-  padding: 1px 0px 0px 0px;
+.question_title h2 {
+  width: 80%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.points{
+  font-size: 1.5em;
+  width: 5%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.points a {
+  display: block;
+}
+
+.question_title {
+}
+
+.question_title li {
+  width: 80%;
+  display: inline-block;
+  vertical-align:top;
+  padding-top: 15px;
+}
+
+.comment_points {
+  font-size: 0.9em;
+  width: 5%;
+  display: inline-block;
+}
+
+.points a {
+  display: block;
 }

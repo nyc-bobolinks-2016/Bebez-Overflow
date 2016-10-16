@@ -1,21 +1,18 @@
 <li class="answers">
-  <div>
+  <div class="question_title">
     <%if logged_in? %>
-        <a class="down_answer_count"
-          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span>
-        </a>
-        <a class="up_answer_count"
-          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+        <div class="comment_points">
+          <a class="up_answer_count" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+          <span class='count'> <%= total_votes(answer) %> </span>
+          <a class="down_answer_count" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        </div>
     <% else %>
-        <a class="down_answer_count"
-          href="#"><span class="glyphicon glyphicon-chevron-down"></span>
-        </a>
-        <a class="up_answer_count"
-          href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+        <div class="comment_points">
+          <a class="up_answer_count" href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+          <span class='count'> <%= total_votes(answer) %> </span>
+          <a class="down_answer_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+        </div>
     <% end %>
-    <span class='count'>
-        <%= total_votes(answer) %>
-    </span>
   </div>
   <%= answer.content %> - <%= answer.responder.username %>
   <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
