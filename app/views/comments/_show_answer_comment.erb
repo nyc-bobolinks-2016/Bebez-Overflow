@@ -1,5 +1,6 @@
 <div>
   <%if logged_in? %>
+
       <a class="up_answer_comment_count"
         href="/questions/<%= comment.commentable.question.id %>/answers/<%= comment.commentable.id %>/comments/<%= comment.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
       <a class="down_answer_comment_count"

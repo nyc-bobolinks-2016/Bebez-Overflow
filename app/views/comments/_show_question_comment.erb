@@ -1,5 +1,6 @@
 <div>
   <%if logged_in? %>
+
       <a class="up_comment_question_count"
       href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
       <a class="down_comment_question_count"
@@ -11,7 +12,6 @@
       <a class="down_comment_question_count"
         href="#"><span class="glyphicon glyphicon-chevron-down"></span>
       </a>
-
   <% end %>
   <span >
       <%= total_votes(comment) %>
