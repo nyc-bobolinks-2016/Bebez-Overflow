@@ -1,10 +1,10 @@
 <h2>
   <%if logged_in? %>
-  <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down">👎</a>
-  <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up">👍</a>
+  <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+  <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
   <% else %>
-  <a id="down_question_count" href="#">👎</a>
-  <a id="up_question_count" href="#">👍</a>
+  <a id="down_question_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+  <a id="up_question_count" href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
   <% end %>
   <span id="total_question_votes"> <%= total_votes(@question) %>:</span>
   <%= @question.title  %></h2>

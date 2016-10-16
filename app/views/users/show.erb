@@ -1,5 +1,5 @@
 <div class="container">
-    <h2>Welcome, <%= @user.username %></h2>
+    <h3>Welcome, <%= @user.username %></h3>
 
     <ul class="tabs">
         <li class="active"><a href="#Profile">Profile</a></li>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="tab-content" id="activity">
-      <h2>Summary</h2>
+      <h3>Summary</h3>
       <div class="questions-summary">
         <h4>Questions</h4>
         <% @questions.each do |question| %>
