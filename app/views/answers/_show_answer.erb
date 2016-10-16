@@ -1,17 +1,16 @@
 <li class="answers">
   <div>
     <%if logged_in? %>
-        <a class="down_answer_count"
-          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/down">👎
-        </a>
         <a class="up_answer_count"
-          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up">👍</a>
+          href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+        <a class="down_answer_count"
+            href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span>
+          </a>
     <% else %>
+        <a class="up_answer_count" href="#">
+          <span class="glyphicon glyphicon-chevron-up"></span></a>
         <a class="down_answer_count"
-          href="#">👎
-        </a>
-        <a class="up_answer_count"
-          href="#">👍</a>
+          href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
     <% end %>
     <span >
         <%= total_votes(answer) %>

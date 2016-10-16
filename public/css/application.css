@@ -1,8 +1,8 @@
 body {
-  counter-reset:section;
+  counter-reset: section;
   background-color: #E0E0E0;
   font-family: Verdana;
-  max-width: 700px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -31,148 +31,35 @@ header p a:nth-child(n + 2):before {
   content: " | ";
 }
 
-article {
-  margin: 5px 5px;
-}
+  /* Remove the navbar's default margin-bottom and rounded borders */
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
 
-article a.vote-button {
-  color: #8C8C8C;
-  text-decoration: none;
-  display: inline;
-  vertical-align: sub;
-}
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {height: 600px}
 
+  /* Set gray background color and 100% height */
+  .sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
 
-article h2 {
-  display: inline;
-  font-size: 10pt;
-}
-
-article:before {
-  counter-increment: section;
-  color: #8C8C8C;
-  font-size: 10pt;
-  content: counter(section) ". ";
-}
-
-article h2 a {
-  text-decoration: none;
-  color: black;
-}
-
-article p {
-  color: #8C8C8C;
-  font-size: 7pt;
-  margin: 3px 30px;
-}
-
-article p span.points:after {
-  content: " points";
-}
-
-article p span.username:before {
-  content: " by ";
-}
-
-article p span.timestamp:after {
-  content: ' hours ago';
-}
-
-article p span.comment-count:before {
-  content: ' | ';
-}
-
-article p span.comment-count:after {
-  content: ' comments | ';
-}
-
-article p a.delete {
-  text-decoration: none;
-  color: #8C8C8C;
-  text-decoration: none;
-}
-
-article p a.delete:before {
-  content: ' delete this post';
-
-}
+  /* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
 
 
-.form_comment textArea input {
-  display: block;
-}
-
-.container {
-    margin: auto;
-    width: 600px;
-}
-
-form#posts input[type='text'] {
-  width: 200px;
-  margin-left: 20px;
-  font-size: 10pt;
-  height: 17px;
-
-}
-
-form#posts input[type='submit'] {
-  font-size: 10pt;
-  margin-left: 5px;
-  border-width: 1px;
-  font-weight: bold;
-  background-color: #F4712D;
-}
-
-.inline {
-  display: inline;
-}
-
-.tabs li.active {
-    border: 1px solid #ccc;
-    border-bottom: 1px solid white;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    margin-bottom: -1px;
-    height: 31px;
-    padding: 9px 14px;
-}
-
-.tabs li.active a {
-    color: black;
-    text-decoration: none;
-    border-bottom: none;
-}
-
-.tab-content {
-    display: none;
-}
-.tabs {
-    float: left;
-    border-bottom: 1px solid #ccc;
-    width: 100%;
-    margin-bottom: 16px;
-    list-style: none;
-}
-.tabs li {
-    float: left;
-    margin-right: 16px;
-    padding: 10px 15px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #ECF0F1;
-}
-.tabs li a {
-    color: #666;
-    font-family: Helvetica, Arial, sans-serif;
-    text-decoration: none;
-}
-
-
-.upvote-button {
-  background-color: transparent;
-  border: none;
-  padding-top: 5px;
-  color: #8C8C8C;
-  vertical-align: sub;
-  padding: 1px 0px 0px 0px;
-}
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height:auto;}
+  }
