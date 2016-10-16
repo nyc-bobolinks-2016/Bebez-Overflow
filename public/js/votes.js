@@ -35,7 +35,7 @@ $("#up_question_count").click(function(event){
 
 $('.question-comment').on('click', '.down_comment_question_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)/
   var question_id = reg.exec(route)[1];
@@ -54,7 +54,7 @@ $('.question-comment').on('click', '.down_comment_question_count', function(even
 
 $('.question-comment').on('click', '.up_comment_question_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)/
   var question_id = reg.exec(route)[1];
@@ -73,7 +73,7 @@ $('.question-comment').on('click', '.up_comment_question_count', function(event)
 
 $('.answers_List').on('click', '.down_answer_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)/
   var question_id = reg.exec(route)[1];
@@ -92,7 +92,7 @@ $('.answers_List').on('click', '.down_answer_count', function(event) {
 
 $('.answers_List').on('click', '.up_answer_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)/
   var question_id = reg.exec(route)[1];
@@ -111,7 +111,7 @@ $('.answers_List').on('click', '.up_answer_count', function(event) {
 
 $('.answers_List').on('click', '.answer_comments .down_answer_comment_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)\S*(\d+)/
   var comment_id = reg.exec(route)[3];
@@ -129,7 +129,7 @@ $('.answers_List').on('click', '.answer_comments .down_answer_comment_count', fu
 
 $('.answers_List').on('click', '.answer_comments .up_answer_comment_count', function(event) {
   event.preventDefault();
-  var votes = $(this).parent().find('span')
+  var votes = $(this).parent().find('.count')
   var route = $(this).attr('href');
   var reg = /(\d+)\S*(\d+)\S*(\d+)/
   var comment_id = reg.exec(route)[3];
