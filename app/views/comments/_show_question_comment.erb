@@ -1,19 +1,20 @@
-<div>
+<div class="question_title">
   <%if logged_in? %>
-      <a class="down_comment_question_count"
-        href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+    <div class="comment_points">
       <a class="up_comment_question_count"
         href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
-  <% else %>
+        <span class='count'><%= total_votes(comment) %></span>
       <a class="down_comment_question_count"
-        href="#"><span class="glyphicon glyphicon-chevron-down"></span>
-      </a>
+        href="/questions/<%= @commentable.id %>/comments/<%= comment.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+      </div>
+  <% else %>
+    <div class="comment_points">
       <a class="up_comment_question_count"
-        href="#"><span class="glyphicon glyphicon-chevron-up"></span>
-      </a>
+        href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+        <span class='count'><%= total_votes(comment) %></span>
+      <a class="down_comment_question_count"
+        href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+      </div>
   <% end %>
-  <span class='count'>
-      <%= total_votes(comment) %>
-  </span>
+  <li class="comments"><%= comment.text %> - <%= comment.commenter.username %></li>
 </div>
-<li class="comments"><%= comment.text %> - <%= comment.commenter.username %></li>

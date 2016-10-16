@@ -1,13 +1,19 @@
-<h2>
+<div class="question_title">
   <%if logged_in? %>
-  <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
-  <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+   <div class="points">
+     <a id="up_question_count" href="/questions/<%= @question.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
+     <span id="total_question_votes"> <%= total_votes(@question) %></span>
+     <a id="down_question_count" href="/questions/<%= @question.id %>/votes/down"><span class="glyphicon glyphicon-chevron-down"></span></a>
+   </div>
   <% else %>
-  <a id="down_question_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
-  <a id="up_question_count" href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+    <div class="points">
+      <a id="up_question_count" href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>
+      <span id="total_question_votes"> <%= total_votes(@question) %></span>
+      <a id="down_question_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
+    </div>
   <% end %>
-  <span id="total_question_votes"> <%= total_votes(@question) %>:</span>
-  <%= @question.title  %></h2>
+  <h2>: <%= @question.title %></h2>
+</div>
 <div>
   <ul class='question_details'>
     <li class='question'>question :<%= @question.body %></li>
