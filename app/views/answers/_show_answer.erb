@@ -13,9 +13,8 @@
           <a class="down_answer_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
         </div>
     <% end %>
+    <span class="answer_text">  <%= answer.content %> - <%= answer.responder.username %> <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a></span>
   </div>
-  <%= answer.content %> - <%= answer.responder.username %>
-  <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
 </li>
 <ul id="answer_comments_<%= answer.id %>" class="answer_comments">
   <% answer.comments.each do |comment| %>

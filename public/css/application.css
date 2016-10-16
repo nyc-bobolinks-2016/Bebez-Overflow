@@ -197,6 +197,14 @@ form#posts input[type='submit'] {
   padding-top: 15px;
 }
 
+.question_title .answer_text {
+  width: 80%;
+  display: inline-block;
+  vertical-align:top;
+  padding-top: 15px;
+}
+
+
 .comment_points {
   font-size: 0.9em;
   width: 5%;
@@ -205,4 +213,8 @@ form#posts input[type='submit'] {
 
 .points a {
   display: block;
+}
+
+.answers {
+  list-style: none;
 }
