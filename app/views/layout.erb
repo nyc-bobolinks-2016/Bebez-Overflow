@@ -1,38 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <!-- <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon'/ > -->
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
+  <link rel="stylesheet" href="/css/application.css">
   <script src="/js/application.js"></script>
   <script src="/js/votes.js"></script>
 
-  <title></title>
-</head>
-<body>
-  <h2 class="container">Bebez Overflow</h2>
+  <title>Bebez Overstack</title>
 
-  <nav class="container">
-    <a href="/">home</a>
-    <% if logged_in? %>
-      <a href="/logout">log out</a>
-      <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
-    <% else %>
-      <a href="/users/new">sign up</a>
-      <a href="/login">log in</a>
-    <% end %>
-  </nav>
-  <%= yield %>
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="http://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a" width = 40px></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <% if logged_in? %>
+          <a href="/logout"><span class="glyphicon glyphicon-log-out log"> </span></a>
+            <a href="/logout" class="btn btn-default btn-md">log out</a>
+            <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+          <% else %>
+            <a href="/users/new" ><span class="glyphicon glyphicon-log-in log"></span></a>
+            <a href="/users/new" class="btn btn-default btn-md">sign up</a>
+          <a href="/login"><span class="glyphicon glyphicon-log-in log"></span></a>
+            <a href="/login" class="btn btn-default btn-md">log in</a>
+
+          <% end %>
+        </span>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="col-sm-10 text-left">
+      <h2>Bebez Overflow</h2>
+        <%= yield %>
+      <hr>
+    </div>
+    <!-- <div class="col-sm-2 sidenav">
+      <div class="well">
+        <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTdC3HiZCJoj0oBWQ6Ew7CQp-3u_Blel5LVlZiYk1rhHlTKSJK2nw" width=60px>
+      </div>
+      <div class="well">
+        <img src="http://blog.gotstyle.ca/wp-content/uploads/2014/04/Happy-Socks-New-Spring-Arrivals-Gotstyle-Main.png" width=60px>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p>Awesome trio : Catkhuu, Nanutza, and JS!  We got Jesus on our side</p>
+</footer>
+
 </body>
 </html>
