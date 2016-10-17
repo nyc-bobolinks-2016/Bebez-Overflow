@@ -10,7 +10,6 @@ post "/questions/:id/votes/down" do
   end
 end
 
-
 post "/questions/:id/votes/up" do
   @question =  Question.find_by(id: params[:id])
   vote = Vote.new(voteable: @question, voter: current_user, vote_value: 1 )

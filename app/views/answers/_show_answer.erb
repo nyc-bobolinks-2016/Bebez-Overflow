@@ -1,5 +1,21 @@
 <li class="answers">
   <div class="question_title">
+    <%if answer.favorite %>
+      <div class="favorite">
+          <span> &#9989; </span>
+          <!-- <img class="img_fav" src="../img/check_mark.jpeg" alt="" /> -->
+      </div>
+     <% end %>
+     <% if logged_in? && current_user == @question.user %>
+    <form class="favorite" action="/questions/<%= @question.id %>/answers/<%= answer.id %>/favorite" method="post">
+        <input type="hidden" name="_method" value="put">
+        <%if answer.favorite %>
+          <input type="submit" value="&#9745;">
+        <%else%>
+          <input type="submit" value="&#128504;">
+        <% end %>
+    </form>
+     <% end %>
     <%if logged_in? %>
         <div class="comment_points">
           <a class="up_answer_count" href="/questions/<%= @question.id %>/answers/<%= answer.id %>/votes/up"><span class="glyphicon glyphicon-chevron-up"></span></a>
@@ -13,10 +29,13 @@
           <a class="down_answer_count" href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>
         </div>
     <% end %>
+    <span class="answer_text">  <%= answer.content %> - <%= answer.responder.username %>
+          <% if logged_in? %>
+            <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a></span>
+          <% end %>
   </div>
-  <%= answer.content %> - <%= answer.responder.username %>
-  <a class = "comment_answer_link" href="/answers/<%= answer.id %>/comments/new">comment this answer</a>
 </li>
+Comments:
 <ul id="answer_comments_<%= answer.id %>" class="answer_comments">
   <% answer.comments.each do |comment| %>
     <%= erb :'comments/_show_answer_comment', layout: false, locals: {comment: comment }%>

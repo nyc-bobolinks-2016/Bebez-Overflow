@@ -10,3 +10,20 @@ post '/questions/:id/answer' do
     erb :'/answers/_answer'
   end
 end
+
+
+put '/questions/:id/answers/:answer_id/favorite' do
+  @answer = Answer.find_by(id: params[:answer_id])
+  @question = @answer.question
+  @question.answers.each do |answer|
+     answer.update(favorite: false) unless answer == @answer
+  end
+
+  if @answer.favorite
+      @answer.update(favorite: false)
+  else
+      @answer.update(favorite: true)
+  end
+  redirect "/questions/#{@question.id}"
+
+end
