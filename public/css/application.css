@@ -198,7 +198,7 @@ form#posts input[type='submit'] {
 }
 
 .question_title .answer_text {
-  width: 80%;
+  width: 50%;
   display: inline-block;
   vertical-align:top;
   padding-top: 15px;
@@ -222,5 +222,26 @@ form#posts input[type='submit'] {
 .img_fav{
   width: 20px;
   height: 20px;
+}
 
+.favorite {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.favorite span {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 10px;
+  font-size: 1.6em;
+}
+
+.favorite input[type=button], input[type=submit], input[type=reset] {
+    font-size: 1.6em;
+    background-color: #E0E0E0;
+    border: none;
+    padding: 10px 10px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
 }

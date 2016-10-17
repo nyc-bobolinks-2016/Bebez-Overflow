@@ -34,7 +34,10 @@
         <%= erb :'/comments/_show_question_comment', layout: false, locals: { comment: comment } %>
       <% end %>
     </ul>
-    <a id="add-comment" href="/questions/<%= @question.id %>/comments/new">add comment</a>
+    <% if logged_in? %>
+      <a id="add-comment" href="/questions/<%= @question.id %>/comments/new">add comment</a>
+    <% end %>
+
   </div>
   </div>
 
@@ -45,7 +48,9 @@
       <%= erb :'/answers/_show_answer', locals: { answer: answer } %>
       <% end %>
     </ul>
+    <% if logged_in? %>
     <a id="answer" href="/questions/<%= @question.id %>/answers/new">answer this question</a>
+    <% end %>
     <div class="answer-form"><%= erb :'/answers/_answer', locals: { commentable: @commentable } %></div>
   </div>
     <div class="comment-form-question"><%= erb :'/comments/_question_comment', locals: { commentable: @commentable } %></div>
