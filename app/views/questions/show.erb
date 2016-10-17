@@ -41,7 +41,7 @@
   <div class="question-answer">
     <h4>Answers</h4>
     <ul class="answers_List">
-      <% @question.answers.each do |answer| %>
+      <% @question.ordered_answers.each do |answer| %>
       <%= erb :'/answers/_show_answer', locals: { answer: answer } %>
       <% end %>
     </ul>

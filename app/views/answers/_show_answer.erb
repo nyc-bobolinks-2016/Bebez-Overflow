@@ -1,4 +1,15 @@
 <li class="answers">
+<%if answer.favorite %>
+  <div class="favorite">
+      <img class="img_fav" src="../img/check_mark.jpeg" alt="" />
+  </div>
+ <% end %>
+ <% if logged_in? && current_user == @question.user %>
+  <form action="/questions/<%= @question.id %>/answers/<%= answer.id %>/favorite" method="post">
+    <input type="hidden" name="_method" value="put">
+    <input type="submit" value="Favorite">
+</form>
+ <% end %>
   <div class="question_title">
     <%if logged_in? %>
         <div class="comment_points">

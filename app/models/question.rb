@@ -8,4 +8,17 @@ class Question < ActiveRecord::Base
     self.votes.reduce(0) { |total, vote| total += vote.vote_value }
   end
 
+  def ordered_answers
+    my_answers = []
+    answer_favotire = self.answers.find{|an| an.favorite}
+    my_answers.push(answer_favotire) if answer_favotire
+    sorted = self.answers.reject{|answer| answer == answer_favotire }
+
+
+    sorted.each do |a|
+      my_answers.push(a)
+    end
+    my_answers
+  end
+
 end

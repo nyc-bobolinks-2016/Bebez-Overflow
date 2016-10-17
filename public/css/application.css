@@ -218,3 +218,9 @@ form#posts input[type='submit'] {
 .answers {
   list-style: none;
 }
+
+.img_fav{
+  width: 20px;
+  height: 20px;
+
+}
